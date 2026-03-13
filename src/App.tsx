@@ -6,7 +6,7 @@ import RatioBox from './components/RatioBox';
 import { UDLPanel } from './components/UDLPanel';
 import { EmotionQuest } from './components/game/EmotionQuest';
 import { AITutor } from './components/game/AITutor';
-import { useAuthSim, saveProgressSim } from './services/firebaseSim';
+import { useAuth, saveProgress } from './hooks/useAuth';
 import './App.css';
 
 export interface TelemetryData {
@@ -17,7 +17,7 @@ export interface TelemetryData {
 
 function App() {
   const { t, i18n } = useTranslation();
-  const { user, loginAnonymously, logout } = useAuthSim();
+  const { user, loading: authLoading, loginAnonymously, logout } = useAuth();
   const [isDark, setIsDark] = useState(false);
   const [lang, setLang] = useState<'en' | 'ar'>('en');
   const [voiceEnabled, setVoiceEnabled] = useState(false);
@@ -33,7 +33,7 @@ function App() {
         const newData = { ...prev, timeSpent: prev.timeSpent + 1 };
         // Save simulated progress every 10 seconds if user logged in
         if (user && newData.timeSpent % 10 === 0) {
-          saveProgressSim(user.uid, newData).catch(console.error);
+          saveProgress(user.uid, newData as Record<string, unknown>).catch(console.error);
         }
         return newData;
       });
@@ -84,14 +84,18 @@ function App() {
           <a href="#stats" style={{ color: 'inherit', textDecoration: 'none' }}>{t('nav_market')}</a>
         </nav>
         <div className="controls">
-          {user ? (
-            <button className="icon-btn" onClick={logout} title="Simulated Logout">
+          {authLoading ? (
+            <button className="icon-btn" disabled title="Connecting..." style={{ opacity: 0.5 }}>
+              <LogIn />
+            </button>
+          ) : user ? (
+            <button className="icon-btn" onClick={logout} title={`Logout (${user.isAnonymous ? 'Guest' : user.uid})`}>
               <LogOut />
             </button>
           ) : (
-             <button className="icon-btn" onClick={loginAnonymously} title="Simulated Anonymous Login">
-               <LogIn />
-             </button>
+            <button className="icon-btn" onClick={loginAnonymously} title="Sign in as Guest">
+              <LogIn />
+            </button>
           )}
           <button className="icon-btn" onClick={() => setVoiceEnabled(!voiceEnabled)} title={voiceEnabled ? "Turn off Voice Assistant" : "Turn on Voice Assistant"}>
             {voiceEnabled ? <Volume2 /> : <VolumeX />}
