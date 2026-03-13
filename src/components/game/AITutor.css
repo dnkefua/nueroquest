@@ -1,0 +1,99 @@
+.ai-tutor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.tutor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.tutor-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.tutor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.camera-feed-sim {
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.emotion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary-light);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  animation: popIn 0.3s ease-out;
+}
+
+.tutor-response {
+  background: var(--bg-alt);
+  padding: 1rem;
+  border-radius: 12px;
+  border-left: 3px solid var(--primary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: slideUp 0.3s ease-out;
+}
+
+.gemini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.detection-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.sensory-safe-tutor .camera-feed-sim {
+  border-style: solid; /* Less visual noise than dashed */
+}

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap');
+
+:root {
+  --primary: #2563EB;
+  --primary-light: #60A5FA;
+  --primary-dark: #1D4ED8;
+  --secondary: #10B981;
+  --bg: #F9FAFB;
+  --bg-alt: #FFFFFF;
+  --panel-bg: rgba(255, 255, 255, 0.95);
+  --footer-bg: #111827;
+  --text-main: #1F2937;
+  --text-muted: #4B5563;
+  --text-light: #F9FAFB;
+  --border: rgba(0, 0, 0, 0.08);
+  --error: #EF4444;
+  --success: #10B981;
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius: 16px;
+  --blur: blur(8px);
+  --font-en: 'Inter', 'Outfit', sans-serif;
+  --font-ar: 'Cairo', sans-serif;
+  --transition: 0.3s;
+}
+
+body.dark {
+  --primary: #3B82F6;
+  --bg: #111827;
+  --bg-alt: #1F2937;
+  --panel-bg: rgba(31, 41, 55, 0.95);
+  --footer-bg: #0B0F19;
+  --text-main: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --udl-text-size: 100%;
+  --udl-brightness: 100%;
+}
+
+html {
+  font-size: var(--udl-text-size);
+  filter: brightness(var(--udl-brightness));
+  transition: filter 0.3s ease, font-size 0.3s ease;
+}
+
+body.sensory-safe {
+  --primary: #818cf8;
+  --bg: #fdfdfd;
+  --text-main: #374151;
+  /* Reduced motion */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+body {
+  font-family: var(--font-en);
+  background: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition) ease, color var(--transition) ease;
+  overflow-x: hidden;
+}
+
+[dir="rtl"] {
+  font-family: var(--font-ar);
+}
+
+.glass {
+  background: var(--panel-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}

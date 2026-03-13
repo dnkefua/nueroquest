@@ -1,0 +1,170 @@
+.learning-area {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+}
+
+.module-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.module-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.ratio-box-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.ratio-equation {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 4rem;
+    font-weight: 800;
+}
+
+.ratio-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fraction-line {
+    width: 100%;
+    height: 6px;
+    background-color: var(--text-main);
+    border-radius: 3px;
+}
+
+.drop-zone {
+    min-width: 80px;
+    min-height: 80px;
+    border: 3px dashed var(--border);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 3rem;
+    transition: all 0.3s;
+}
+
+.drop-zone.drag-over {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.drop-zone.filled {
+    border-style: solid;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.drag-options {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.draggable {
+    width: 80px;
+    height: 80px;
+    background: var(--panel-bg);
+    border: 2px solid var(--primary-light);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
+
+.cube-container {
+    width: 80px;
+    height: 80px;
+    perspective: 800px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(20deg);
+    transition: transform 0.3s ease;
+    cursor: grab;
+}
+
+.cube:active {
+    cursor: grabbing;
+}
+
+.cube-face {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    border: 2px solid var(--primary-light);
+    background: var(--panel-bg);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.cube-front {
+    transform: translateZ(40px);
+}
+
+.cube-right {
+    transform: rotateY(90deg) translateZ(40px);
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.cube-top {
+    transform: rotateX(90deg) translateZ(40px);
+    background: rgba(96, 165, 250, 0.2);
+}
+
+.check-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.check-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
+}

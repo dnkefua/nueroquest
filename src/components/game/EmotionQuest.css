@@ -1,0 +1,250 @@
+.emotion-quest-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.game-title h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.game-title p {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.progress-dashboard {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 150px;
+}
+
+.progress-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.progress-label span {
+  margin-left: auto;
+  color: var(--primary);
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lp-fill {
+  background: var(--primary);
+}
+
+.atl-fill {
+  background: var(--secondary);
+}
+
+.game-world {
+  position: relative;
+  min-height: 500px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Isometric Stage */
+.isometric-stage {
+  flex-grow: 1;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.desert-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #FDB813 0%, #FF8C00 100%);
+  z-index: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+
+.dune {
+  position: absolute;
+  bottom: 0;
+  width: 150%;
+  height: 100px;
+  background: #E9C46A;
+  border-radius: 50% 50% 0 0;
+  transform: translateX(-15%);
+}
+
+.dune-1 {
+  bottom: -20px;
+  background: #F4A261;
+  z-index: 1;
+  height: 150px;
+}
+
+.sun {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #FFF;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  animation: pulse 4s infinite alternate;
+}
+
+.npc-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transform: translateY(20px);
+}
+
+.zara-svg {
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
+  transition: transform 0.5s ease;
+  animation: float 4s infinite ease-in-out;
+}
+
+.npc-bubble {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  max-width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  animation: popIn 0.3s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.game-controls {
+  margin-top: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.game-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--success);
+}
+
+.bounce {
+  animation: bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Sensory Safe Mode Overrides */
+.sensory-safe-game .desert-background {
+  background: #fdf5e6; /* Soft cream */
+}
+
+.sensory-safe-game .sun {
+  box-shadow: none;
+  background: #ffe4b5;
+}
+
+.sensory-safe-game .dune,
+.sensory-safe-game .dune-1 {
+  background: #e8dcc4;
+}
